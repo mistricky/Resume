@@ -15,7 +15,8 @@ export interface IThemeInterface {
 }
 
 export const theme = {
-  primaryColor: "#e9e9eb"
+  primaryColor: "#e9e9eb",
+  backgroundColor: "#eceff1"
 };
 
 export default styled;
