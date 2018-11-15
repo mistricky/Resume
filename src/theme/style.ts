@@ -12,11 +12,24 @@ const {
 
 export interface IThemeInterface {
   primaryColor: string;
+  shadowColor: string;
+  backgroundColor: string;
+  borderColor: string;
+  borderRadius: string;
+  color: string;
+  hoverColor: string;
+  mobileWidth: string;
 }
 
 export const theme = {
-  primaryColor: "#e9e9eb",
-  backgroundColor: "#eceff1"
+  primaryColor: "#fff",
+  shadowColor: "#cecece",
+  backgroundColor: "#eceff1",
+  borderColor: "#cecece",
+  borderRadius: "3px",
+  color: "#fff",
+  hoverColor: "#dfe6e9",
+  mobileWidth: "960px"
 };
 
 export default styled;
