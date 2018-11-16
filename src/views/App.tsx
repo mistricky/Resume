@@ -17,6 +17,8 @@ injectGlobal`
 
   html {
     font-size:12px;
+    min-width: 100%;
+    min-height:100%;
   }
 
   body{

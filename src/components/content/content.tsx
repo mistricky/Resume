@@ -2,7 +2,7 @@ import React, { Component, ReactNode } from "react";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-  flex: 3;
+  flex: 1;
 
   @media (max-width: 960px) {
     width: 100%;
