@@ -1,4 +1,5 @@
 {
+  "extends": "./node_modules/@magicspace/configs/tsconfig.json",
   "compilerOptions": {
     "baseUrl": ".",
     "outDir": "build/dist",
@@ -27,6 +28,8 @@
     "acceptance-tests",
     "webpack",
     "jest",
-    "src/setupTests.ts"
-  ]
+    "src/setupTests.ts",
+    "images.d.ts"
+  ],
+  "include": ["src/**/*"]
 }
