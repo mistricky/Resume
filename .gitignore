@@ -18,6 +18,9 @@ server/node_modules
 .env.test.local
 .env.production.local
 
+# database
+server/ormconfig.json
+
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
