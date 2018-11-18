@@ -1,8 +1,10 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { UserModule } from './core/user/user.module';
+import {Module} from '@nestjs/common';
+import {TypeOrmModule} from '@nestjs/typeorm';
+
+import {AppController} from './app.controller';
+import {AppService} from './app.service';
+// tslint:disable-next-line:import-path-shallowest
+import {UserModule} from './core/user/user.module';
 
 @Module({
   imports: [TypeOrmModule.forRoot()],
