@@ -1,10 +1,10 @@
-import {Column, Entity, JoinColumn, OneToOne} from 'typeorm';
+import {Column, Entity, JoinColumn, OneToOne, PrimaryColumn} from 'typeorm';
 
 import {User} from '../user';
 
 @Entity()
 export class HomePage {
-  @Column()
+  @PrimaryColumn()
   type!: 'github' | 'csdn' | 'other';
 
   @Column()
