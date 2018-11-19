@@ -37,7 +37,9 @@ function emitMessage(
   msg: string,
   ...supportsDetails: any[]
 ): void {
-  console[type](msg, supportsDetails);
+  !supportsDetails.length
+    ? console[type](msg, supportsDetails)
+    : console[type](msg);
 }
 
 export let logger = new Logger();
