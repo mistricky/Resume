@@ -1,7 +1,8 @@
 import {Module} from '@nestjs/common';
+import {TypeOrmModule} from '@nestjs/typeorm';
 
 @Module({
-  imports: [],
+  imports: [TypeOrmModule.forFeature([HonorModule])],
   controllers: [],
   providers: [],
 })
