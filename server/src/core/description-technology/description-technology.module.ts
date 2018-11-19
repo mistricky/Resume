@@ -1,8 +1,10 @@
 import {Module} from '@nestjs/common';
 
+import {DescriptionTechnology} from './description-technology.entity';
+
 @Module({
-  imports:[],
-  providers:[],
-  controllers:[],
+  imports: [DescriptionTechnology],
+  providers: [],
+  controllers: [],
 })
-export class DescriptionTechnologyModule { }
+export class DescriptionTechnologyModule {}
