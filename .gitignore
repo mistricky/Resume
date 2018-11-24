@@ -4,12 +4,14 @@
 node_modules
 client/node_modules
 server/node_modules
+shared/node_modules
 
 # testing
 /coverage
 
 # production
 /build
+shared/bld
 
 # misc
 .DS_Store
