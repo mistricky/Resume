@@ -1,5 +1,5 @@
 import {logger} from './logger';
 
-export function PromiseCatcher(p: Promise<any>): void {
-  p.catch(err => logger.err(err));
+export function PromiseCatcher(p: Promise<unknown>): void {
+  p.catch(err => logger.err(err.toString()));
 }
