@@ -2,6 +2,7 @@
   "extends": "../node_modules/@magicspace/configs/tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
+    "lib": ["dom", "es2015", "esnext"],
     "declaration": true,
     "noImplicitAny": false,
     "removeComments": true,
