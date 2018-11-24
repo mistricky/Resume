@@ -1,8 +1,8 @@
 import {Module} from '@nestjs/common';
 
+import {GraphqlConfigService} from './graphql.service';
+
 @Module({
-  imports:[],
-  providers:[],
-  controllers:[],
+  providers: [GraphqlConfigService],
 })
-export class GraphqlModule { }
+export class GraphqlConfigModule {}
