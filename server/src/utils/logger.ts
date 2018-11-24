@@ -1,3 +1,4 @@
+// tslint:disable-next-line:no-implicit-dependencies
 import 'colors';
 
 import {Injectable} from '@nestjs/common';
@@ -18,7 +19,7 @@ export class Logger implements ILogger {
   }
 
   err(msg: string, ...supportsDetails: any[]): void {
-    emitMessage('err', msg.red, supportsDetails);
+    emitMessage('error', msg.red, supportsDetails);
   }
 
   log(msg: string, ...supportsDetails: any[]): void {
@@ -30,7 +31,7 @@ export class Logger implements ILogger {
   }
 }
 
-type ConsoleType = 'info' | 'err' | 'warn' | 'log';
+type ConsoleType = 'info' | 'error' | 'warn' | 'log';
 
 function emitMessage(
   type: ConsoleType,
