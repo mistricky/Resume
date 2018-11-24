@@ -4,6 +4,7 @@
     "target": "es6",
     "lib": ["es2015", "dom", "esnext"],
     "rootDir": "src",
-    "outDir": "bld"
+    "outDir": "bld",
+    "declaration": true
   }
 }
