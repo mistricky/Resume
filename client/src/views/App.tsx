@@ -1,9 +1,10 @@
-import React, { Component, ReactNode } from "react";
-import { ThemeWrapper, injectGlobal, theme } from "src/theme";
-import styled from "src/theme/style";
-import { Side } from "src/components/side";
-import { Content } from "src/components/content";
-import { HeaderBar } from "src/components/header";
+import React, {Component, ReactNode} from 'react';
+
+import {Content} from 'src/components/content';
+import {HeaderBar} from 'src/components/header';
+import {Side} from 'src/components/side';
+import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
+import styled from 'src/theme/style';
 
 injectGlobal`
   * {
