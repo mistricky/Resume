@@ -9,6 +9,8 @@
     "@fortawesome/fontawesome-svg-core": "^1.2.8",
     "@fortawesome/free-solid-svg-icons": "^5.5.0-2",
     "@fortawesome/react-fontawesome": "^0.1.4-1",
+    "mobx": "^5.6.0",
+    "mobx-react": "^5.4.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
     "react-scripts-ts": "3.1.0",
@@ -28,7 +30,8 @@
     "@types/react-dom": "^16.0.9",
     "lerna": "^3.4.3",
     "prettier": "^1.15.2",
-    "typescript": "^3.1.6",
-    "tslint": "^5.11.0"
+    "reflect-metadata": "^0.1.12",
+    "tslint": "^5.11.0",
+    "typescript": "^3.1.6"
   }
 }
