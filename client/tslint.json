@@ -1,3 +1,12 @@
 {
-  "extends": "@magicspace/configs/prettier-tslint"
+  "extends": "@magicspace/configs/tslint-prettier",
+  "rules": {
+    "no-void-expression": false,
+    "no-implicit-dependencies": false,
+    "no-conditional-assignment": false,
+    "no-unused-expression": false
+  },
+  "linterOptions": {
+    "exclude": ["node_modules/**"]
+  }
 }
