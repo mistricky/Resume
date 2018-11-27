@@ -3,6 +3,7 @@ import styled, {keyframes} from 'styled-components';
 
 interface BottomModalProps {
   isView?: boolean;
+  isCancel?: boolean;
 }
 
 const Pop = keyframes`
@@ -35,7 +36,9 @@ const Wrapper = styled.div<BottomModalProps>`
   animation-fill-mode: forwards !important;
   ${props =>
     props.isView
-      ? `animation: ${Pop} 1s linear 1, ${Hidden} 1s linear 3s 1;`
+      ? `animation: ${Pop} 1s linear 1`
+      : props.isCancel
+      ? `animation: ${Hidden} 1s linear 1`
       : undefined}
 `;
 
