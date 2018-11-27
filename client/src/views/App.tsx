@@ -25,9 +25,9 @@ injectGlobal`
   body{
     position:relative;
     background: ${theme.backgroundColor};
-    height:100%;
     padding-top:4.5rem;
     padding: 0rem 1rem;
+    overflow:hidden;
   }
 
   #root {
@@ -49,7 +49,7 @@ const Wrapper = styled.div`
   flex-direction: row;
 `;
 
-export class App extends Component {
+export class App extends Component<{}, any> {
   render(): ReactNode {
     return (
       <ThemeWrapper>
