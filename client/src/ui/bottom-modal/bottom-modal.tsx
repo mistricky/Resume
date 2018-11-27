@@ -33,13 +33,16 @@ const Wrapper = styled.div<BottomModalProps>`
   bottom: -100px;
   background: #000;
   animation-fill-mode: forwards !important;
-  animation: ${Pop} 1s linear 1, ${Hidden} 1s linear 3s 1;
+  ${props =>
+    props.isView
+      ? `animation: ${Pop} 1s linear 1, ${Hidden} 1s linear 3s 1;`
+      : undefined}
 `;
 
 export class BottomModal extends Component<BottomModalProps> {
   render(): ReactNode {
-    let {isView = false} = this.props;
+    let {isView = false, children} = this.props;
 
-    return <Wrapper isView={isView} />;
+    return <Wrapper isView={isView}>{children}</Wrapper>;
   }
 }
