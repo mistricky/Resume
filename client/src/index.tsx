@@ -9,3 +9,4 @@ export * from './theme';
 export * from './ui';
 export * from './views';
 export * from './utils';
+export * from './components';
