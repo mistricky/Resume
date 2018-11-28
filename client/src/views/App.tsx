@@ -1,6 +1,11 @@
+import {Provider, observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
 
 import {Content, HeaderBar, LoginPromptModal, Side} from 'src/components';
+import * as stores from 'src/entrances';
+// tslint:disable-next-line:no-duplicate-imports
+import {bottomModalStore} from 'src/entrances';
+import {userService} from 'src/entrances/services';
 import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
 import styled from 'src/theme/style';
 
@@ -47,16 +52,25 @@ const Wrapper = styled.div`
   flex-direction: row;
 `;
 
-export class App extends Component<{}, any> {
+@observer
+export class App extends Component {
+  componentWillMount(): void {
+    if (!userService.user) {
+      bottomModalStore.isView = true;
+    }
+  }
+
   render(): ReactNode {
     return (
       <ThemeWrapper>
-        <Wrapper>
-          <HeaderBar />
-          <Side />
-          <Content />
-          <LoginPromptModal isView={true} />
-        </Wrapper>
+        <Provider {...stores}>
+          <Wrapper>
+            <HeaderBar />
+            <Side />
+            <Content />
+            <LoginPromptModal isView={bottomModalStore.isView} />
+          </Wrapper>
+        </Provider>
       </ThemeWrapper>
     );
   }
