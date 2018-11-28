@@ -1,13 +1,19 @@
 import styled from 'styled-components';
 
-export const Button = styled.button`
+interface ButtonProps {
+  bgColor: string;
+  color: string;
+  hoverColor: string;
+}
+
+export const Button = styled.button<ButtonProps>`
   outline: none;
-  color: white;
+  color: ${props => props.color};
   cursor: pointer;
   border:none;
-  background:${props => props.theme.green}
+  background:${props => props.bgColor}
 
   &:hover {
-    background:${props => props.theme.deepGreen}
+    background:${props => props.hoverColor}
   }
 `;
