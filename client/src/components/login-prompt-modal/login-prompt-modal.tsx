@@ -1,7 +1,10 @@
 import React, {Component, ReactNode} from 'react';
 import styled from 'styled-components';
 
-import {BottomModal} from '../ui/bottom-modal';
+import {theme} from 'src/theme';
+import {BottomModal, Button} from 'src/ui';
+
+import {BasicButtonWrapper} from './basic-button';
 
 interface LoginPromptModalProps {
   isView: boolean;
@@ -12,7 +15,9 @@ const LoginPrompt = styled.div`
   height: 100%;
   background: #000;
   display: flex;
+  align-items: center;
   justify-content: flex-end;
+  padding: 0 5px;
 `;
 
 export class LoginPromptModal extends Component<LoginPromptModalProps> {
@@ -21,7 +26,10 @@ export class LoginPromptModal extends Component<LoginPromptModalProps> {
 
     return (
       <BottomModal isView={isView}>
-        <LoginPrompt />
+        <LoginPrompt>
+          <BasicButtonWrapper>Login</BasicButtonWrapper>
+          <BasicButtonWrapper>Sign Up</BasicButtonWrapper>
+        </LoginPrompt>
       </BottomModal>
     );
   }
