@@ -11,6 +11,7 @@ export const Button = styled.button<ButtonProps>`
   color: ${props => props.color};
   cursor: pointer;
   border:none;
+  border-radius: ${props => props.theme.borderRadius};
   background:${props => props.bgColor}
 
   &:hover {
