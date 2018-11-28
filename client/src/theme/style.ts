@@ -32,9 +32,14 @@ export const theme = {
   mobileWidth: '960px',
   green: '#2ecc71',
   deepGreen: '#27ae60',
+  yellow: '#fad390',
+  deepYellow: '#f6b93b',
+  blue: '#3498db',
+  deepBlue: '#2980b9',
   smallFont: '13px',
   mediumFont: '16px',
   largeFont: '20px',
+  popBgColor: 'rgba(0, 0, 0, 0.8)',
 };
 
 export default styled;
