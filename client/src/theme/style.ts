@@ -32,6 +32,9 @@ export const theme = {
   mobileWidth: '960px',
   green: '#2ecc71',
   deepGreen: '#27ae60',
+  smallFont: '13px',
+  mediumFont: '16px',
+  largeFont: '20px',
 };
 
 export default styled;
