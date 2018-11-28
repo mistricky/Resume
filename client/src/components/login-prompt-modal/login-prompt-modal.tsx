@@ -1,8 +1,7 @@
 import React, {Component, ReactNode} from 'react';
 import styled from 'styled-components';
 
-import {theme} from 'src/theme';
-import {BottomModal, Button} from 'src/ui';
+import {BottomModal} from 'src/ui';
 
 import {BasicButtonWrapper} from './basic-button';
 
@@ -21,6 +20,10 @@ const LoginPrompt = styled.div`
 `;
 
 export class LoginPromptModal extends Component<LoginPromptModalProps> {
+  handleClick(): void {
+    alert('aaa');
+  }
+
   render(): ReactNode {
     let {isView} = this.props;
 
@@ -29,6 +32,9 @@ export class LoginPromptModal extends Component<LoginPromptModalProps> {
         <LoginPrompt>
           <BasicButtonWrapper>Login</BasicButtonWrapper>
           <BasicButtonWrapper>Sign Up</BasicButtonWrapper>
+          <BasicButtonWrapper width="auto" onClick={() => this.handleClick()}>
+            Let me think think
+          </BasicButtonWrapper>
         </LoginPrompt>
       </BottomModal>
     );
