@@ -1,15 +1,16 @@
 import React, {Component, ReactNode} from 'react';
 
+import {loginModalCircleStore} from 'src/entrances';
 import styled, {theme} from 'src/theme/style';
 import {Button} from 'src/ui';
 
 interface BasicButtonProps {
   width?: string;
+  circleColor?: string;
 }
 
 interface BasicButtonWrapperProps extends BasicButtonProps {
   onClick?(): void;
-  onMouseOver?(): void;
 }
 
 const BasicButton = styled(Button)<BasicButtonProps>`
@@ -27,8 +28,17 @@ const BasicButton = styled(Button)<BasicButtonProps>`
 `;
 
 export class BasicButtonWrapper extends Component<BasicButtonWrapperProps> {
+  handleBtnOver(circleColor: string): void {
+    loginModalCircleStore.isDeploy = true;
+    loginModalCircleStore.bgColor = circleColor;
+  }
+
+  handleBtnOut(): void {
+    loginModalCircleStore.isDeploy = false;
+  }
+
   render(): ReactNode {
-    let {children, width, onClick, onMouseOver} = this.props;
+    let {children, width, onClick, circleColor = 'transparent'} = this.props;
 
     return (
       <BasicButton
@@ -37,7 +47,8 @@ export class BasicButtonWrapper extends Component<BasicButtonWrapperProps> {
         color="#fff"
         width={width}
         onClick={onClick}
-        onMouseOver={onMouseOver}
+        onMouseOver={() => this.handleBtnOver(circleColor)}
+        onMouseOut={() => this.handleBtnOut()}
       >
         {children}
       </BasicButton>
