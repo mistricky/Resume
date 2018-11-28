@@ -1,6 +1,9 @@
-import React, { Component, ReactNode } from "react";
-import styled from "src/theme/style";
-import { Avatar } from "./avatar";
+import React, {Component, ReactNode} from 'react';
+
+import {userService} from 'src/entrances';
+import styled from 'src/theme/style';
+
+import {Avatar} from './avatar';
 
 const Wrapper = styled.div`
   width: 30rem;
@@ -19,7 +22,7 @@ export class Side extends Component {
   render(): ReactNode {
     return (
       <Wrapper>
-        <Avatar />
+        <Avatar src={userService.avatar} />
       </Wrapper>
     );
   }
