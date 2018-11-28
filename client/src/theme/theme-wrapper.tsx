@@ -1,8 +1,9 @@
-import React, { SFC } from "react";
-import { ThemeProvider, theme } from "./style";
+import React, {FunctionComponent} from 'react';
 
-export const ThemeWrapper: SFC = props => {
-  let { children } = props;
+import {ThemeProvider, theme} from './style';
+
+export const ThemeWrapper: FunctionComponent = props => {
+  let {children} = props;
 
   return <ThemeProvider theme={theme}>{children}</ThemeProvider>;
 };
