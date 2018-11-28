@@ -1,11 +1,11 @@
-import * as styledComponents from "styled-components";
+import * as styledComponents from 'styled-components';
 
 const {
   default: styled,
   css,
   injectGlobal,
   keyframes,
-  ThemeProvider
+  ThemeProvider,
 } = styledComponents as styledComponents.ThemedStyledComponentsModule<
   IThemeInterface
 >;
@@ -22,15 +22,17 @@ export interface IThemeInterface {
 }
 
 export const theme = {
-  primaryColor: "#fff",
-  shadowColor: "#cecece",
-  backgroundColor: "#eceff1",
-  borderColor: "#cecece",
-  borderRadius: "3px",
-  color: "#fff",
-  hoverColor: "#dfe6e9",
-  mobileWidth: "960px"
+  primaryColor: '#fff',
+  shadowColor: '#cecece',
+  backgroundColor: '#eceff1',
+  borderColor: '#cecece',
+  borderRadius: '3px',
+  color: '#000',
+  hoverColor: '#dfe6e9',
+  mobileWidth: '960px',
+  green: '#2ecc71',
+  deepGreen: '#27ae60',
 };
 
 export default styled;
-export { css, injectGlobal, keyframes, ThemeProvider };
+export {css, injectGlobal, keyframes, ThemeProvider};
