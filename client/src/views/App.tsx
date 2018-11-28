@@ -4,8 +4,7 @@ import React, {Component, ReactNode} from 'react';
 import {Content, HeaderBar, LoginPromptModal, Side} from 'src/components';
 import * as stores from 'src/entrances';
 // tslint:disable-next-line:no-duplicate-imports
-import {bottomModalStore} from 'src/entrances';
-import {userService} from 'src/entrances/services';
+import {bottomModalStore, userService} from 'src/entrances';
 import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
 import styled from 'src/theme/style';
 
