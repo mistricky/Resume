@@ -9,6 +9,7 @@ interface BasicButtonProps {
 
 interface BasicButtonWrapperProps extends BasicButtonProps {
   onClick?(): void;
+  onMouseOver?(): void;
 }
 
 const BasicButton = styled(Button)<BasicButtonProps>`
