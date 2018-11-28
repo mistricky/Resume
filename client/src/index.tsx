@@ -11,4 +11,4 @@ export * from './views';
 export * from './utils';
 export * from './components';
 export * from './store';
-export * from './store-entrances';
+export * from './entrances';
