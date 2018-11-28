@@ -1,5 +1,6 @@
 import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
+import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 // import {BottomModalStore} from 'src/store';
@@ -15,7 +16,7 @@ interface LoginPromptModalProps {
   loginModalCircleStore?: LoginModalCircleStore;
 }
 
-interface CircleProps {
+export interface CircleProps {
   isDeploy?: boolean;
   bgColor: string;
 }
@@ -63,15 +64,14 @@ const LoginButton = styled(BasicButtonWrapper)``;
 const RegisterButton = styled(BasicButtonWrapper)``;
 const SkipButton = styled(BasicButtonWrapper)``;
 
-const Circle = styled.div<CircleProps>`
-  width: ${props => (props.isDeploy ? '2000px' : '0')};
-  height: ${props => (props.isDeploy ? '2000px' : '0')};
+export const Circle = styled.div<CircleProps>`
+  width: ${props => (props.isDeploy ? '100%' : '0')};
+  height: ${props => (props.isDeploy ? '100%' : '0')};
   background: ${props => props.bgColor};
   transition: all 0.5s;
-  border-radius: 50%;
 `;
 
-const CircleWrapper = styled.div`
+export const CircleWrapper = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
@@ -96,8 +96,12 @@ export class LoginPromptModal extends Component<LoginPromptModalProps> {
         <LoginPrompt>
           <PromptText>工作找到没啊！加入组织啊！！！</PromptText>
           <ButtonWrapper>
-            <LoginButton circleColor={theme.blue}>登录</LoginButton>
-            <RegisterButton circleColor={theme.yellow}>注册</RegisterButton>
+            <Link to="/login">
+              <LoginButton circleColor={theme.blue}>登录</LoginButton>
+            </Link>
+            <Link to="/register">
+              <RegisterButton circleColor={theme.yellow}>注册</RegisterButton>
+            </Link>
             <SkipButton onClick={() => this.handleClick()} circleColor="#000">
               随便逛逛！
             </SkipButton>
