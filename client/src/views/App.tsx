@@ -1,8 +1,6 @@
 import React, {Component, ReactNode} from 'react';
 
-import {Content} from 'src/components/content';
-import {HeaderBar} from 'src/components/header';
-import {Side} from 'src/components/side';
+import {Content, HeaderBar, LoginPromptModal, Side} from 'src/components';
 import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
 import styled from 'src/theme/style';
 
@@ -57,6 +55,7 @@ export class App extends Component<{}, any> {
           <HeaderBar />
           <Side />
           <Content />
+          <LoginPromptModal isView={true} />
         </Wrapper>
       </ThemeWrapper>
     );
