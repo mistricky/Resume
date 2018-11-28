@@ -8,21 +8,21 @@ interface BottomModalProps {
 
 const Pop = keyframes`
   from {
-    bottom: -100%;
+    transform: translateY(0)
   }
 
   to {
-    bottom: 0px;
+    transform: translateY(-100%)
   }
 `;
 
 const Hidden = keyframes`
   from {
-    bottom: 0px;
+    transform: translateY(-100%)
   }
 
   to {
-    bottom: -100%;
+    transform: translateY(0)
   }
 `;
 
@@ -31,14 +31,14 @@ const Wrapper = styled.div<BottomModalProps>`
   height: 100px;
   position: absolute;
   left: 0px;
-  bottom: -100px;
+  top:100%;
   animation-fill-mode: forwards !important;
   ${props =>
     props.isView
-      ? `animation: ${Pop} 1s linear 1`
+      ? `animation: ${Pop} 0.6s linear 1`
       : props.isView === undefined
       ? undefined
-      : `animation: ${Hidden} 1s linear 1`}
+      : `animation: ${Hidden} 0.6s linear 1`}
 
   @media (max-width: ${props => props.theme.mobileWidth}) {
     height:auto;
