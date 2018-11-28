@@ -1,5 +1,9 @@
-import React, { Component, ReactNode } from "react";
-import styled from "styled-components";
+import React, {Component, ReactNode} from 'react';
+import styled from 'styled-components';
+
+interface AvatarProps {
+  src: string;
+}
 
 const Wrapper = styled.div`
   & {
@@ -10,13 +14,23 @@ const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
   }
 `;
 
-export class Avatar extends Component {
-  render(): ReactNode {
-    let { children } = this.props;
+const AvatarBody = styled.img`
+  width: 100%;
+  height: 100%;
+`;
 
-    return <Wrapper>{children}</Wrapper>;
+export class Avatar extends Component<AvatarProps> {
+  render(): ReactNode {
+    let {src} = this.props;
+
+    return (
+      <Wrapper>
+        <AvatarBody src={src} />
+      </Wrapper>
+    );
   }
 }
