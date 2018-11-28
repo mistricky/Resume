@@ -1,16 +1,23 @@
-import {inject, observer} from 'mobx-react';
+import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
 import styled from 'styled-components';
 
 // import {BottomModalStore} from 'src/store';
-import {BottomModalStore} from 'src/store';
+import {bottomModalStore, loginModalCircleStore} from 'src/entrances';
+import {BottomModalStore, LoginModalCircleStore} from 'src/store';
+import {theme} from 'src/theme';
 import {BottomModal} from 'src/ui';
 
 import {BasicButtonWrapper} from './basic-button';
 
 interface LoginPromptModalProps {
-  isView: boolean;
-  bottomModalStore?: any;
+  bottomModalStore?: BottomModalStore;
+  loginModalCircleStore?: LoginModalCircleStore;
+}
+
+interface CircleProps {
+  isDeploy?: boolean;
+  bgColor: string;
 }
 
 const LoginPrompt = styled.div`
@@ -23,6 +30,7 @@ const LoginPrompt = styled.div`
   padding: 0 5px;
   position: relative;
   z-index: 1;
+  overflow: hidden;
 
   @media (max-width: ${props => props.theme.mobileWidth}) {
     justify-content: center;
@@ -51,40 +59,61 @@ const ButtonWrapper = styled.div`
   }
 `;
 
+const LoginButton = styled(BasicButtonWrapper)``;
+const RegisterButton = styled(BasicButtonWrapper)``;
+const SkipButton = styled(BasicButtonWrapper)``;
+
+const Circle = styled.div<CircleProps>`
+  width: ${props => (props.isDeploy ? '2000px' : '0')};
+  height: ${props => (props.isDeploy ? '2000px' : '0')};
+  background: ${props => props.bgColor};
+  transition: all 0.5s;
+  border-radius: 50%;
+`;
+
+const CircleWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+`;
+
 @observer
-@inject('bottomModalStore')
 export class LoginPromptModal extends Component<LoginPromptModalProps> {
-  private bottomModalStore: BottomModalStore;
-
-  constructor(props: LoginPromptModalProps) {
-    super(props);
-    this.bottomModalStore = this.props.bottomModalStore;
-  }
-
   handleClick(): void {
     this.closeModal();
   }
 
   render(): ReactNode {
-    let {isView} = this.props;
-
     return (
-      <BottomModal isView={isView}>
+      <BottomModal isView={bottomModalStore.isView}>
         <LoginPrompt>
           <PromptText>工作找到没啊！加入组织啊！！！</PromptText>
           <ButtonWrapper>
-            <BasicButtonWrapper>Login</BasicButtonWrapper>
-            <BasicButtonWrapper>Sign Up</BasicButtonWrapper>
-            <BasicButtonWrapper width="auto" onClick={() => this.handleClick()}>
-              Let me think think
-            </BasicButtonWrapper>
+            <LoginButton circleColor={theme.blue}>登录</LoginButton>
+            <RegisterButton circleColor={theme.yellow}>注册</RegisterButton>
+            <SkipButton onClick={() => this.handleClick()} circleColor="#000">
+              随便逛逛！
+            </SkipButton>
           </ButtonWrapper>
+          <CircleWrapper>
+            <Circle
+              bgColor={loginModalCircleStore.bgColor}
+              isDeploy={loginModalCircleStore.isDeploy}
+            />
+          </CircleWrapper>
         </LoginPrompt>
       </BottomModal>
     );
   }
 
   private closeModal(): void {
-    this.bottomModalStore.isView = false;
+    bottomModalStore.isView = false;
   }
 }
