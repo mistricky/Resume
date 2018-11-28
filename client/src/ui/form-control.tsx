@@ -5,8 +5,14 @@ import styled from 'styled-components';
 import {Circle, CircleWrapper} from 'src/components';
 import {loginModalCircleStore} from 'src/entrances';
 
+interface Style {
+  width: string;
+  height: string;
+}
+
 interface FormControlProps {
   bgColor: string;
+  style: Style;
 }
 
 const Body = styled.div`
@@ -14,6 +20,8 @@ const Body = styled.div`
   height: 600px;
   background: #fff;
   border-radius: ${props => props.theme.borderRadius};
+  padding: 30px 20px;
+  box-shadow: 0 0 5px ${props => props.theme.shadowColor};
 `;
 
 const Wrapper = styled.div`
@@ -32,11 +40,11 @@ export class FormControl extends Component<FormControlProps> {
   }
 
   render(): ReactNode {
-    let {children, bgColor} = this.props;
+    let {children, bgColor, style} = this.props;
 
     return (
       <Wrapper>
-        <Body>{children}</Body>
+        <Body style={style}>{children}</Body>
         <CircleWrapper>
           <Circle bgColor={bgColor} isDeploy={loginModalCircleStore.isDeploy} />
         </CircleWrapper>
