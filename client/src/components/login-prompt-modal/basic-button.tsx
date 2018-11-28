@@ -28,7 +28,7 @@ const BasicButton = styled(Button)<BasicButtonProps>`
 
 export class BasicButtonWrapper extends Component<BasicButtonWrapperProps> {
   render(): ReactNode {
-    let {children, width, onClick} = this.props;
+    let {children, width, onClick, onMouseOver} = this.props;
 
     return (
       <BasicButton
@@ -37,6 +37,7 @@ export class BasicButtonWrapper extends Component<BasicButtonWrapperProps> {
         color="#fff"
         width={width}
         onClick={onClick}
+        onMouseOver={onMouseOver}
       >
         {children}
       </BasicButton>
