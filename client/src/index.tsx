@@ -10,3 +10,4 @@ export * from './ui';
 export * from './views';
 export * from './utils';
 export * from './components';
+export * from './store';
