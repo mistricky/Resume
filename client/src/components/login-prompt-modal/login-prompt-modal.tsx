@@ -11,7 +11,7 @@ import {BottomModal} from 'src/ui';
 
 import {BasicButtonWrapper} from './basic-button';
 
-interface LoginPromptModalProps {
+export interface LoginPromptModalProps {
   bottomModalStore?: BottomModalStore;
   loginModalCircleStore?: LoginModalCircleStore;
 }
@@ -19,6 +19,13 @@ interface LoginPromptModalProps {
 export interface CircleProps {
   isDeploy?: boolean;
   bgColor: string;
+  isCircle?: boolean;
+  size?: string;
+  animationDuration?: string;
+}
+
+export interface CircleWrapperProps {
+  zIndex?: string;
 }
 
 const LoginPrompt = styled.div`
@@ -65,19 +72,22 @@ const RegisterButton = styled(BasicButtonWrapper)``;
 const SkipButton = styled(BasicButtonWrapper)``;
 
 export const Circle = styled.div<CircleProps>`
-  width: ${props => (props.isDeploy ? '100%' : '0')};
-  height: ${props => (props.isDeploy ? '100%' : '0')};
+  width: ${props =>
+    props.isDeploy ? (props.isCircle ? props.size : '100%') : '0'};
+  height: ${props =>
+    props.isDeploy ? (props.isCircle ? props.size : '100%') : '0'};
   background: ${props => props.bgColor};
-  transition: all 0.5s;
+  transition: all ${props => props.animationDuration || '0.5s'};
+  border-radius: ${props => (props.isCircle ? '50%' : '0')};
 `;
 
-export const CircleWrapper = styled.div`
+export const CircleWrapper = styled.div<CircleWrapperProps>`
   width: 100%;
   height: 100%;
   position: absolute;
   top: 0;
   left: 0;
-  z-index: -1;
+  z-index: ${props => props.zIndex || -1} !important;
   display: flex;
   justify-content: center;
   align-items: center;
