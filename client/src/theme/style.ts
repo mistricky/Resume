@@ -36,10 +36,16 @@ export const theme = {
   deepYellow: '#f6b93b',
   blue: '#3498db',
   deepBlue: '#2980b9',
+  gradientBlueAndGreen:
+    'linear-gradient(20deg, rgb(52,152,219), rgb(46,204,113))',
+  gradientYellowAndGreen:
+    'linear-gradient(20deg, rgb(250,211,144), rgb(46,204,113))',
   smallFont: '13px',
   mediumFont: '16px',
   largeFont: '20px',
   popBgColor: 'rgba(0, 0, 0, 0.8)',
+  darkGray: '#a9a9a9',
+  grayFontColor: '#999',
 };
 
 export default styled;
