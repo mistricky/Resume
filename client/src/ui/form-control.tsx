@@ -5,12 +5,12 @@ import styled from 'styled-components';
 import {Circle, CircleWrapper} from 'src/components';
 import {loginModalCircleStore} from 'src/entrances';
 
-interface Style {
+export interface Style {
   width: string;
   height: string;
 }
 
-interface FormControlProps {
+export interface FormControlProps {
   bgColor: string;
   style: Style;
 }
@@ -22,6 +22,12 @@ const Body = styled.div`
   border-radius: ${props => props.theme.borderRadius};
   padding: 30px 20px;
   box-shadow: 0 0 5px ${props => props.theme.shadowColor};
+
+  @media (max-width: ${props => props.theme.mobileWidth}) {
+    box-shadow: none;
+    width: 100% !important;
+    height: 100% !important ;
+  }
 `;
 
 const Wrapper = styled.div`
@@ -30,15 +36,14 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  /* background: ${props => props.theme.blue}; */
+
+  @media (max-width: ${props => props.theme.mobileWidth}) {
+    align-items: flex-start;
+  }
 `;
 
 @observer
 export class FormControl extends Component<FormControlProps> {
-  componentDidMount(): void {
-    setTimeout(() => (loginModalCircleStore.isDeploy = true), 500);
-  }
-
   render(): ReactNode {
     let {children, bgColor, style} = this.props;
 
