@@ -1,7 +1,8 @@
 import {Provider, observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
+import {BrowserRouter, Route} from 'react-router-dom';
 
-import {Content, HeaderBar, LoginPromptModal, Side} from 'src/components';
+import {Login, Resume} from 'src/components';
 import * as stores from 'src/entrances';
 // tslint:disable-next-line:no-duplicate-imports
 import {bottomModalStore, userService} from 'src/entrances';
@@ -64,10 +65,13 @@ export class App extends Component {
       <ThemeWrapper>
         <Provider {...stores}>
           <Wrapper>
-            <HeaderBar />
-            <Side />
-            <Content />
-            <LoginPromptModal isView={bottomModalStore.isView} />
+            {/* <Modal /> */}
+            <BrowserRouter>
+              <>
+                <Route exact path="/" component={Resume} />
+                <Route exact path="/login" component={Login} />
+              </>
+            </BrowserRouter>
           </Wrapper>
         </Provider>
       </ThemeWrapper>
