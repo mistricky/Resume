@@ -1,10 +1,20 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
+import {loginModalCircleStore} from 'src/entrances';
 import {theme} from 'src/theme';
-import {Button, FormControl, Input} from 'src/ui';
+import {
+  Button,
+  CheckBox,
+  Direction,
+  FormComponent,
+  FormControl,
+  Input,
+} from 'src/ui';
 
 import {BackBtn} from '../back-btn';
 
@@ -35,7 +45,6 @@ const EntryWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 10px 0;
 `;
 
 const EntryBtn = styled(Button)`
@@ -43,11 +52,52 @@ const EntryBtn = styled(Button)`
   height: 40px;
 `;
 
+const LoginQuestion = styled.div`
+  color: ${props => props.theme.grayFontColor};
+  font-size: ${props => props.theme.mediumFont};
+  cursor: pointer;
+`;
+
+@observer
 export class Login extends Component {
+  @observable
+  isCheck: boolean = false;
+
+  @observable
+  username: string = '';
+
+  @observable
+  password: string = '';
+
+  @observable
+  isFloat: boolean | undefined;
+
+  componentWillUnmount(): void {
+    loginModalCircleStore.isDeploy = false;
+  }
+
+  componentWillMount(): void {
+    this.readUserInfo() &&
+      setTimeout(() => (loginModalCircleStore.isDeploy = true), 500) &&
+      (this.isFloat = true);
+
+    loginModalCircleStore.isDeploy = false;
+  }
+
+  handleCheckBoxClick(): void {
+    this.isCheck = !this.isCheck;
+
+    if (this.isCheck) {
+      this.saveUserInfo();
+    } else {
+      this.removeUserInfo();
+    }
+  }
+
   render(): ReactNode {
     return (
       <FormControl
-        bgColor={theme.blue}
+        bgColor={theme.gradientBlueAndGreen}
         style={{
           width: '500px',
           height: 'auto',
@@ -61,19 +111,80 @@ export class Login extends Component {
             <TitleText>登录</TitleText>
             <Coffee icon="coffee" />
           </Title>
-          <Input placeholder="请输入您的姓名" />
-          <Input placeholder="请输入您的密码" type="password" />
-          <EntryWrapper>
-            <EntryBtn
-              color="#fff"
-              bgColor={theme.blue}
-              hoverColor={theme.deepBlue}
+          <FormComponent>
+            <Input
+              icon="user"
+              placeholder="Username"
+              onChange={val => (this.username = val)}
+              value={this.username}
+              isFloat={this.isFloat}
+            />
+          </FormComponent>
+          <FormComponent>
+            <Input
+              icon="lock"
+              placeholder="Password"
+              type="password"
+              value={this.password}
+              onChange={val => (this.password = val)}
+              isFloat={this.isFloat}
+            />
+          </FormComponent>
+          <FormComponent>
+            <Direction
+              direction="row"
+              style={{
+                width: '80%',
+                justifyContent: 'space-between',
+              }}
             >
-              修改自己的简历！
-            </EntryBtn>
-          </EntryWrapper>
+              <CheckBox
+                isCheck={this.isCheck}
+                handleClick={() => this.handleCheckBoxClick()}
+              />
+              <LoginQuestion>登录时遇到问题？</LoginQuestion>
+            </Direction>
+          </FormComponent>
+          <FormComponent>
+            <EntryWrapper>
+              <EntryBtn
+                color="#fff"
+                bgColor={theme.blue}
+                hoverColor={theme.deepBlue}
+              >
+                修改自己的简历！
+              </EntryBtn>
+            </EntryWrapper>
+          </FormComponent>
         </Wrapper>
       </FormControl>
     );
+  }
+
+  private saveUserInfo(): void {
+    localStorage.setItem('username', this.username);
+    localStorage.setItem('password', this.password);
+  }
+
+  private removeUserInfo(): void {
+    localStorage.removeItem('username');
+    localStorage.removeItem('password');
+  }
+
+  private readUserInfo(): boolean {
+    let username;
+    let password;
+
+    if (
+      (username = localStorage.getItem('username')) &&
+      (password = localStorage.getItem('password'))
+    ) {
+      this.username = username;
+      this.password = password;
+
+      return (this.isCheck = true);
+    } else {
+      return (this.isCheck = false);
+    }
   }
 }
