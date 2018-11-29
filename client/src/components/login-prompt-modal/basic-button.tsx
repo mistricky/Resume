@@ -20,10 +20,13 @@ const BasicButton = styled(Button)<BasicButtonProps>`
   ${props => (props.width ? 'padding: 0 15px;' : undefined)}
 
   @media (min-width: ${props => props.theme.mobileWidth}) {
-    & {
-      margin-left: 20px;
-      margin-right: 6px;
-    }
+    margin-left: 20px;
+    margin-right: 6px;
+  }
+
+  @media (max-width: ${props => props.theme.mobileWidth}) {
+    width: 300px;
+    margin: 5px 0;
   }
 `;
 
