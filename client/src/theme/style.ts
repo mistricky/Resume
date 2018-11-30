@@ -11,14 +11,7 @@ const {
 >;
 
 export interface IThemeInterface {
-  primaryColor: string;
-  shadowColor: string;
-  backgroundColor: string;
-  borderColor: string;
-  borderRadius: string;
-  color: string;
-  hoverColor: string;
-  mobileWidth: string;
+  [index: string]: string;
 }
 
 export const theme = {
@@ -43,9 +36,13 @@ export const theme = {
   smallFont: '13px',
   mediumFont: '16px',
   largeFont: '20px',
+  greatFont: '26px',
   popBgColor: 'rgba(0, 0, 0, 0.8)',
   darkGray: '#a9a9a9',
   grayFontColor: '#999',
+  darkPane: '#4b4b4b',
+  red: '#e74c3c',
+  deepRed: '#c0392b',
 };
 
 export default styled;
