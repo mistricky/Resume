@@ -28,7 +28,7 @@ const Hidden = keyframes`
 
 const Wrapper = styled.div<BottomModalProps>`
   width: 100%;
-  height: 100px;
+  height: 6rem;
   position: absolute;
   left: 0px;
   top:100%;
