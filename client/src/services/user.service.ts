@@ -37,11 +37,11 @@ export class UserService {
   @observable
   homePages: HomePage[] = [
     {
-      type: 'CSDN',
+      type: 'csdn',
       link: 'https://blog.csdn.net/HaoDaWang',
     },
     {
-      type: 'Github',
+      type: 'github',
       link: 'https://github.com/HaoDaWang',
     },
   ];
