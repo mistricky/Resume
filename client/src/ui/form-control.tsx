@@ -20,8 +20,8 @@ const Body = styled.div`
   height: 600px;
   background: #fff;
   border-radius: ${props => props.theme.borderRadius};
-  padding: 30px 20px;
   box-shadow: 0 0 5px ${props => props.theme.shadowColor};
+  overflow: hidden;
 
   @media (max-width: ${props => props.theme.mobileWidth}) {
     box-shadow: none;
@@ -40,6 +40,10 @@ const Wrapper = styled.div`
   @media (max-width: ${props => props.theme.mobileWidth}) {
     align-items: flex-start;
   }
+`;
+
+export const FormControlBodyWrapper = styled.div`
+  padding: 30px 20px;
 `;
 
 @observer
