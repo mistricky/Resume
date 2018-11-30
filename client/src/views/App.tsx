@@ -5,7 +5,7 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Login, Resume} from 'src/components';
 import * as stores from 'src/entrances';
 // tslint:disable-next-line:no-duplicate-imports
-import {bottomModalStore, userService} from 'src/entrances';
+import {bottomModalStore, loginService} from 'src/entrances';
 import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
 import styled from 'src/theme/style';
 
@@ -21,8 +21,6 @@ injectGlobal`
 
   html {
     font-size:12px;
-    min-width: 100%;
-    min-height:100%;
   }
 
   body{
@@ -31,6 +29,7 @@ injectGlobal`
     padding-top:4.5rem;
     padding: 0rem 1rem;
     overflow:hidden;
+    min-height:28rem;
   }
 
   #root {
@@ -55,7 +54,7 @@ const Wrapper = styled.div`
 @observer
 export class App extends Component {
   componentWillMount(): void {
-    if (!userService.user) {
+    if (!loginService.isLogin) {
       bottomModalStore.isView = true;
     }
   }
