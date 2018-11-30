@@ -1,4 +1,5 @@
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {Popover} from 'antd';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
@@ -13,10 +14,13 @@ import {
   Direction,
   FormComponent,
   FormControl,
+  FormControlBodyWrapper,
   Input,
 } from 'src/ui';
 
 import {BackBtn} from '../back-btn';
+
+import {OtherLoginWay} from './other-login-way';
 
 const Wrapper = styled.div`
   width: 100%;
@@ -58,6 +62,10 @@ const LoginQuestion = styled.div`
   cursor: pointer;
 `;
 
+const LoginQuestionItem = styled.p`
+  cursor: pointer;
+`;
+
 @observer
 export class Login extends Component {
   @observable
@@ -95,6 +103,15 @@ export class Login extends Component {
   }
 
   render(): ReactNode {
+    let loginQuestion = (
+      <>
+        <LoginQuestionItem>1. 无法用手机重置密码</LoginQuestionItem>
+        <LoginQuestionItem>2. 无法用邮箱重置密码</LoginQuestionItem>
+        <LoginQuestionItem>3. 找回密码失败</LoginQuestionItem>
+        <LoginQuestionItem>4. owner 太帅</LoginQuestionItem>
+      </>
+    );
+
     return (
       <FormControl
         bgColor={theme.gradientBlueAndGreen}
@@ -104,58 +121,68 @@ export class Login extends Component {
         }}
       >
         <Wrapper>
-          <Title>
-            <Link to="/">
-              <BackBtn />
-            </Link>
-            <TitleText>登录</TitleText>
-            <Coffee icon="coffee" />
-          </Title>
-          <FormComponent>
-            <Input
-              icon="user"
-              placeholder="Username"
-              onChange={val => (this.username = val)}
-              value={this.username}
-              isFloat={this.isFloat}
-            />
-          </FormComponent>
-          <FormComponent>
-            <Input
-              icon="lock"
-              placeholder="Password"
-              type="password"
-              value={this.password}
-              onChange={val => (this.password = val)}
-              isFloat={this.isFloat}
-            />
-          </FormComponent>
-          <FormComponent>
-            <Direction
-              direction="row"
-              style={{
-                width: '80%',
-                justifyContent: 'space-between',
-              }}
-            >
-              <CheckBox
-                isCheck={this.isCheck}
-                handleClick={() => this.handleCheckBoxClick()}
+          <FormControlBodyWrapper>
+            <Title>
+              <Link to="/">
+                <BackBtn />
+              </Link>
+              <TitleText>登录</TitleText>
+              <Coffee icon="coffee" />
+            </Title>
+            <FormComponent>
+              <Input
+                icon="user"
+                placeholder="Username"
+                onChange={val => (this.username = val)}
+                value={this.username}
+                isFloat={this.isFloat}
               />
-              <LoginQuestion>登录时遇到问题？</LoginQuestion>
-            </Direction>
-          </FormComponent>
-          <FormComponent>
-            <EntryWrapper>
-              <EntryBtn
-                color="#fff"
-                bgColor={theme.blue}
-                hoverColor={theme.deepBlue}
+            </FormComponent>
+            <FormComponent>
+              <Input
+                icon="lock"
+                placeholder="Password"
+                type="password"
+                value={this.password}
+                onChange={val => (this.password = val)}
+                isFloat={this.isFloat}
+              />
+            </FormComponent>
+            <FormComponent>
+              <Direction
+                direction="row"
+                style={{
+                  width: '80%',
+                  justifyContent: 'space-between',
+                }}
               >
-                修改自己的简历！
-              </EntryBtn>
-            </EntryWrapper>
-          </FormComponent>
+                <CheckBox
+                  isCheck={this.isCheck}
+                  handleClick={() => this.handleCheckBoxClick()}
+                />
+                <Popover
+                  placement="bottomRight"
+                  title="看看遇到的是不是这些问题？"
+                  content={loginQuestion}
+                >
+                  <LoginQuestion>登录时遇到问题？</LoginQuestion>
+                </Popover>
+              </Direction>
+            </FormComponent>
+            <FormComponent>
+              <EntryWrapper>
+                <EntryBtn
+                  color="#fff"
+                  bgColor={theme.blue}
+                  hoverColor={theme.deepBlue}
+                >
+                  修改自己的简历！
+                </EntryBtn>
+              </EntryWrapper>
+            </FormComponent>
+          </FormControlBodyWrapper>
+
+          <OtherLoginWay />
         </Wrapper>
       </FormControl>
     );
