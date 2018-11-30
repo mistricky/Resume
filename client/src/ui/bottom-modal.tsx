@@ -35,10 +35,10 @@ const Wrapper = styled.div<BottomModalProps>`
   animation-fill-mode: forwards !important;
   ${props =>
     props.isView
-      ? `animation: ${Pop} 0.6s linear 1`
+      ? `animation: ${Pop} 0.3s linear 1`
       : props.isView === undefined
       ? undefined
-      : `animation: ${Hidden} 0.6s linear 1`}
+      : `animation: ${Hidden} 0.3s linear 1`}
 
   @media (max-width: ${props => props.theme.mobileWidth}) {
     height:auto;
