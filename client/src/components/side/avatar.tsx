@@ -6,21 +6,19 @@ interface AvatarProps {
 }
 
 const Wrapper = styled.div`
-  & {
-    width: 15rem;
-    height: 15rem;
-    border-radius: 1000px;
-    background: ${props => props.theme.backgroundColor};
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    overflow: hidden;
-  }
+  width: 15rem;
+  min-height: 15rem;
+  border-radius: 50%;
+  background: ${props => props.theme.backgroundColor};
+  /* display: flex; */
+  /* justify-content: center; */
+  /* align-items: center; */
+  overflow: hidden;
 `;
 
 const AvatarBody = styled.img`
-  width: 100%;
-  height: 100%;
+  width: 15rem;
+  height: 15rem;
 `;
 
 export class Avatar extends Component<AvatarProps> {
