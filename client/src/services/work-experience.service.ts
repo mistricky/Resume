@@ -1,21 +1,57 @@
 import {observable} from 'mobx';
 
+export interface WorkExperience {
+  company: string;
+  since: number;
+  beginTime: Date;
+  endTime: Date;
+  station: string;
+  department: string;
+}
+
+export class WorkExperienceModel {
+  @observable
+  company: string;
+
+  @observable
+  since: number;
+
+  @observable
+  beginTime: Date;
+
+  @observable
+  endTime: Date;
+
+  @observable
+  station: string;
+
+  @observable
+  department: string;
+
+  constructor({
+    company,
+    since,
+    beginTime,
+    endTime,
+    station,
+    department,
+  }: WorkExperience) {
+    this.company = company;
+    this.since = since;
+    this.beginTime = beginTime;
+    this.endTime = endTime;
+    this.station = station;
+    this.department = department;
+  }
+}
+
 export class WorkExperienceService {
   @observable
-  company: string = '德阳歆美科技有限公司';
+  experiences!: WorkExperienceModel[];
 
-  @observable
-  since: number = 1;
-
-  @observable
-  beginTime: Date = new Date();
-
-  @observable
-  endTime: Date = new Date();
-
-  @observable
-  station: string = 'Web 前端工程师';
-
-  @observable
-  department: string = '研发部';
+  setExperiences(experiences: WorkExperience[]): void {
+    this.experiences = experiences.map(
+      experience => new WorkExperienceModel(experience),
+    );
+  }
 }
