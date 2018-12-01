@@ -1,8 +1,8 @@
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {Popover} from 'antd';
 import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
+import FontAwesome from 'react-fontawesome';
 import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -36,7 +36,7 @@ const Title = styled.div`
   align-items: center;
 `;
 
-const Coffee = styled(FontAwesomeIcon)`
+const Coffee = styled(FontAwesome)`
   font-size: 30px;
 `;
 
@@ -114,7 +114,7 @@ export class Login extends Component {
 
     return (
       <FormControl
-        bgColor={theme.gradientBlueAndGreen}
+        bgColor={theme.blue}
         style={{
           width: '500px',
           height: 'auto',
@@ -127,7 +127,7 @@ export class Login extends Component {
                 <BackBtn />
               </Link>
               <TitleText>登录</TitleText>
-              <Coffee icon="coffee" />
+              <Coffee name="coffee" />
             </Title>
             <FormComponent>
               <Input
