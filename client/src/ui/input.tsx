@@ -1,7 +1,6 @@
-import {IconProp} from '@fortawesome/fontawesome-svg-core';
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
+import FontAwesome from 'react-fontawesome';
 import styled, {keyframes} from 'styled-components';
 
 import {loginModalCircleStore} from 'src/entrances';
@@ -20,7 +19,7 @@ interface InputState {
 interface InputProps extends InputWrapperProps {
   placeholder?: string;
   type?: string;
-  icon?: IconProp;
+  icon?: string;
   value?: string;
   isFloat?: boolean;
   onChange?(val: string): void;
@@ -61,13 +60,13 @@ const PlaceHolderFloat = keyframes`
   }
 
   to {
-    transform: translate(-25px, -100%);
+    transform: translate(-31px, -100%);
   }
 `;
 
 const PlaceHolderLand = keyframes`
   from {
-    transform: translate(-25px, -100%);
+    transform: translate(-31px, -100%);
   }
 
   to {
@@ -83,7 +82,7 @@ const PlaceHolder = styled.div<PlaceHolderProps>`
   position: absolute;
   left: 5px;
   top: 0;
-  margin-left:20px;
+  margin-left:26px;
   color: ${props => props.theme.darkGray};
   ${props =>
     props.isFloat ? 'color: #000;' : `color: ${props.theme.darkGray};`}
@@ -96,8 +95,8 @@ const PlaceHolder = styled.div<PlaceHolderProps>`
       : `animation: ${PlaceHolderLand} 0.1s linear 1;`}
 `;
 
-const FontIcon = styled(FontAwesomeIcon)`
-  font-size: ${props => props.theme.mediumFont};
+const FontIcon = styled(FontAwesome)`
+  font-size: ${props => props.theme.largeFont};
   margin-right: 5px;
 `;
 
@@ -139,7 +138,7 @@ export class Input extends Component<InputProps, InputState> {
       isFloat,
     } = this.props;
 
-    let Icon = icon ? <FontIcon icon={icon} /> : undefined;
+    let Icon = icon ? <FontIcon name={icon} /> : undefined;
 
     return (
       <Wrapper>
