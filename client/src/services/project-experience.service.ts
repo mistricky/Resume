@@ -1,6 +1,6 @@
 import {observable} from 'mobx';
 
-interface ProjectExperience {
+export interface ProjectExperience {
   company: string;
   projectName: string;
   description: string;
