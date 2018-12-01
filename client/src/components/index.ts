@@ -1,6 +1,7 @@
 export * from './back-btn';
 export * from './content';
 export * from './header';
+export * from './item';
 export * from './login';
 export * from './login-prompt-modal';
 export * from './register';
