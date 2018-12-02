@@ -5,9 +5,52 @@ import {BrowserRouter, Route} from 'react-router-dom';
 import {Login, Resume} from 'src/components';
 import * as stores from 'src/entrances';
 // tslint:disable-next-line:no-duplicate-imports
-import {bottomModalStore, loginService} from 'src/entrances';
+import {
+  bottomModalStore,
+  loginService,
+  projectExperienceService,
+  workExperienceService,
+} from 'src/entrances';
+import {WorkExperience} from 'src/services';
+import {ProjectExperience} from 'src/services/project-experience.service';
 import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
 import styled from 'src/theme/style';
+
+// mock request work experiences data
+let experiences: WorkExperience[] = [
+  {
+    company: '德阳歆美科技有限公司',
+    since: 1,
+    beginTime: new Date(),
+    endTime: new Date(),
+    station: 'Web 前端工程师',
+    department: '研发部',
+  },
+  {
+    company: '成都木帆科技有限公司',
+    since: 0.5,
+    beginTime: new Date(),
+    endTime: new Date(),
+    station: 'Web 前端工程师',
+    department: '研发部',
+  },
+  {
+    company: 'Stepin',
+    since: 0.5,
+    beginTime: new Date(),
+    endTime: new Date(),
+    station: 'Web 前端工程师',
+    department: '研发部',
+  },
+];
+
+let projectExperiences: ProjectExperience[] = [
+  {
+    company: '德阳歆美科技有限公司',
+    projectName: '天文航海训保通',
+    description: '```\n function hello(){}\n ```',
+  },
+];
 
 injectGlobal`
   * {
@@ -54,6 +97,9 @@ const Wrapper = styled.div`
 @observer
 export class App extends Component {
   componentWillMount(): void {
+    workExperienceService.setExperiences(experiences);
+    projectExperienceService.setProjectExperiences(projectExperiences);
+
     if (!loginService.isLogin) {
       bottomModalStore.isView = true;
     }
