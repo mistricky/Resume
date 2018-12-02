@@ -3,7 +3,6 @@ import {observable} from 'mobx';
 import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
 import FontAwesome from 'react-fontawesome';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 import {loginModalCircleStore} from 'src/entrances';
@@ -15,6 +14,7 @@ import {
   FormComponent,
   FormControl,
   FormControlBodyWrapper,
+  FormTitle,
   Input,
 } from 'src/ui';
 
@@ -27,31 +27,22 @@ const Wrapper = styled.div`
   height: 100%;
 `;
 
-const Title = styled.div`
-  width: 100%;
-  height: 65px;
-  font-size: 35px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-`;
-
 const Coffee = styled(FontAwesome)`
   font-size: 30px;
 `;
 
-const TitleText = styled.div`
+export const TitleText = styled.div`
   margin: 0 10px;
 `;
 
-const EntryWrapper = styled.div`
+export const EntryWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 `;
 
-const EntryBtn = styled(Button)`
+export const EntryBtn = styled(Button)`
   width: 80%;
   height: 40px;
 `;
@@ -122,13 +113,11 @@ export class Login extends Component {
       >
         <Wrapper>
           <FormControlBodyWrapper>
-            <Title>
-              <Link to="/">
-                <BackBtn />
-              </Link>
+            <FormTitle>
+              <BackBtn />
               <TitleText>登录</TitleText>
               <Coffee name="coffee" />
-            </Title>
+            </FormTitle>
             <FormComponent>
               <Input
                 icon="user"
