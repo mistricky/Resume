@@ -1,5 +1,6 @@
 import React, {Component, ReactNode} from 'react';
 import FontAwesome from 'react-fontawesome';
+import {Link} from 'react-router-dom';
 
 import styled from 'src/theme/style';
 
@@ -24,9 +25,11 @@ export class BackBtn extends Component<BackBtnProps> {
     let {onClick} = this.props;
 
     return (
-      <Wrapper>
-        <BackIcon name="arrow-circle-left" onClick={onClick} />
-      </Wrapper>
+      <Link to="/">
+        <Wrapper>
+          <BackIcon name="arrow-circle-left" onClick={onClick} />
+        </Wrapper>
+      </Link>
     );
   }
 }
