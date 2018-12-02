@@ -11,6 +11,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4-1",
     "@types/marked": "^0.4.2",
     "antd": "^3.10.9",
+    "axios": "^0.18.0",
     "font-awesome": "^4.7.0",
     "highlight.js": "^9.13.1",
     "marked": "^0.5.2",
@@ -32,6 +33,7 @@
   "devDependencies": {
     "@magicspace/configs": "^0.1.46",
     "@types/antd": "^1.0.0",
+    "@types/axios": "^0.14.0",
     "@types/highlight.js": "^9.12.3",
     "@types/jest": "^23.3.9",
     "@types/node": "^10.5.4",
