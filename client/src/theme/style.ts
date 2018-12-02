@@ -39,6 +39,7 @@ export const theme = {
   greatFont: '26px',
   popBgColor: 'rgba(0, 0, 0, 0.8)',
   darkGray: '#a9a9a9',
+  shallowGray: '#dfe6e9',
   grayFontColor: '#999',
   darkPane: '#4b4b4b',
   red: '#e74c3c',
