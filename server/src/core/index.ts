@@ -5,3 +5,4 @@ export * from './user';
 export * from './project';
 export * from './description-technology';
 export * from './work-experience';
+export * from './constant';
