@@ -1,5 +1,6 @@
 import 'antd/dist/antd.css';
 import 'font-awesome/css/font-awesome.css';
+import 'highlight.js/styles/github.css';
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
