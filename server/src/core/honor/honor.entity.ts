@@ -4,7 +4,7 @@ import {User} from '../user';
 
 @Entity()
 export class Honor {
-  @PrimaryColumn()
+  @PrimaryColumn({name: 'competition_name'})
   competitionName!: string;
 
   @Column()

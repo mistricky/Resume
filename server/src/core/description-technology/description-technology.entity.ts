@@ -8,13 +8,13 @@ export class DescriptionTechnology {
   @JoinColumn()
   user!: User;
 
-  @PrimaryColumn()
+  @PrimaryColumn({name: 'back_or_front'})
   backOrFront!: 'back' | 'front';
 
-  @Column()
+  @Column({name: 'technology_stack'})
   technologyStack!: string;
 
-  @Column()
+  @Column({name: 'frame_work'})
   frameWork!: string;
 
   @Column()

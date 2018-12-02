@@ -4,7 +4,7 @@ import {User} from '../user';
 
 @Entity()
 export class Project {
-  @PrimaryColumn()
+  @PrimaryColumn({name: 'project_name'})
   projectName!: string;
 
   @Column()
