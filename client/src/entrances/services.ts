@@ -1,5 +1,9 @@
-import {LoginService, UserService, WorkExperienceService} from 'src/services';
-import {ProjectExperienceService} from 'src/services/project-experience.service';
+import {
+  LoginService,
+  ProjectExperienceService,
+  UserService,
+  WorkExperienceService,
+} from 'src/services';
 
 export const userService = new UserService();
 export const loginService = new LoginService();

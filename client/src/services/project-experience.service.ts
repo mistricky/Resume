@@ -25,10 +25,10 @@ export class ProjectExperienceModel {
 
 export class ProjectExperienceService {
   @observable
-  projectExperiences: ProjectExperienceModel[] = [];
+  projectExperiences!: ProjectExperienceModel[];
 
   setProjectExperiences(projectExperiences: ProjectExperience[]): void {
-    projectExperiences.map(
+    this.projectExperiences = projectExperiences.map(
       experience => new ProjectExperienceModel(experience),
     );
   }
