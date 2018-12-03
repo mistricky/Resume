@@ -1,8 +1,9 @@
 import {Provider, observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
+import {ApolloProvider} from 'react-apollo';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import {Login, Resume} from 'src/components';
+import {Login, Register, Resume} from 'src/components';
 import * as stores from 'src/entrances';
 // tslint:disable-next-line:no-duplicate-imports
 import {
@@ -11,6 +12,7 @@ import {
   projectExperienceService,
   workExperienceService,
 } from 'src/entrances';
+import {client} from 'src/graphql';
 import {WorkExperience} from 'src/services';
 import {ProjectExperience} from 'src/services/project-experience.service';
 import {ThemeWrapper, injectGlobal, theme} from 'src/theme';
@@ -108,17 +110,20 @@ export class App extends Component {
   render(): ReactNode {
     return (
       <ThemeWrapper>
-        <Provider {...stores}>
-          <Wrapper>
-            {/* <Modal /> */}
-            <BrowserRouter>
-              <>
-                <Route exact path="/" component={Resume} />
-                <Route exact path="/login" component={Login} />
-              </>
-            </BrowserRouter>
-          </Wrapper>
-        </Provider>
+        <ApolloProvider client={client}>
+          <Provider {...stores}>
+            <Wrapper>
+              {/* <Modal /> */}
+              <BrowserRouter>
+                <>
+                  <Route exact path="/" component={Resume} />
+                  <Route exact path="/login" component={Login} />
+                  <Route exact path="/register" component={Register} />
+                </>
+              </BrowserRouter>
+            </Wrapper>
+          </Provider>
+        </ApolloProvider>
       </ThemeWrapper>
     );
   }
