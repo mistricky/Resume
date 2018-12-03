@@ -20,3 +20,4 @@ export * from './components';
 export * from './store';
 export * from './entrances';
 export * from './constant';
+export * from './graphql';
