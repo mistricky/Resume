@@ -1,4 +1,3 @@
-export * from './api.service';
 export * from './http.service';
 export * from './login.service';
 export * from './project-experience.service';
