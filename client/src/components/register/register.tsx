@@ -1,7 +1,11 @@
+import {Modal} from 'antd';
 import {observable} from 'mobx';
+import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
+import {MutationFn, OperationVariables} from 'react-apollo';
 
-import {loginModalCircleStore} from 'src/entrances';
+import {floatStore, loginModalCircleStore} from 'src/entrances';
+import {register} from 'src/graphql';
 import {theme} from 'src/theme';
 import {
   FormComponent,
@@ -10,18 +14,19 @@ import {
   FormTitle,
   Input,
 } from 'src/ui';
+import {isEmpty} from 'src/utils';
 
 import {BackBtn} from '../back-btn';
+import {Float} from '../float';
 import {EntryBtn, EntryWrapper, TitleText} from '../login';
 
-type InputType = 'username' | 'password';
-
+@observer
 export class Register extends Component {
   @observable
-  username!: string;
+  username: string = '';
 
   @observable
-  password!: string;
+  password: string = '';
 
   componentWillUnmount(): void {
     loginModalCircleStore.isDeploy = false;
@@ -31,56 +36,84 @@ export class Register extends Component {
     loginModalCircleStore.isDeploy = false;
   }
 
-  handleRegisterClick(): void {
-    // httpService.post('/');
-  }
+  // tslint:disable-next-line:use-default-type-parameter
+  handleRegisterClick(register: MutationFn<any, OperationVariables>): void {
+    if (isEmpty(this.username) || isEmpty(this.password)) {
+      Modal.error({
+        title: '提示',
+        content: (
+          <div>
+            <p>账号或者密码不能为空！</p>
+          </div>
+        ),
+      });
 
-  handleInputChange(val: string, type: InputType): void {
-    this[type] = val;
+      return;
+    }
+
+    register({
+      variables: {
+        userInfo: {
+          username: this.username,
+          password: this.password,
+        },
+      },
+    }).catch(err => console.error(err));
   }
 
   render(): ReactNode {
+    // return (
+    //   <Mutation mutation={register}>
+    //     {(register, {data}) => {
+    //       console.info(data);
+
     return (
-      <FormControl
-        bgColor={theme.yellow}
-        style={{
-          width: '500px',
-          height: 'auto',
-        }}
-      >
-        <FormControlBodyWrapper>
-          <FormTitle>
-            <BackBtn />
-            <TitleText>注册</TitleText>
-          </FormTitle>
-          <FormComponent>
-            <Input
-              icon="user"
-              onChange={val => this.handleInputChange(val, 'username')}
-              placeholder="Username"
-            />
-          </FormComponent>
-          <FormComponent>
-            <Input
-              icon="lock"
-              onChange={val => this.handleInputChange(val, 'password')}
-              placeholder="Password"
-            />
-          </FormComponent>
-          <FormComponent>
-            <EntryWrapper>
-              <EntryBtn
-                color="#fff"
-                bgColor={theme.green}
-                hoverColor={theme.deepGreen}
-                onClick={() => this.handleRegisterClick()}
-              >
-                加入 Fast Resume ！
-              </EntryBtn>
-            </EntryWrapper>
-          </FormComponent>
-        </FormControlBodyWrapper>
-      </FormControl>
+      <Float isView={floatStore.registerIsView}>
+        <FormControl
+          bgColor={theme.yellow}
+          style={{
+            width: '500px',
+            height: 'auto',
+          }}
+        >
+          <FormControlBodyWrapper>
+            <FormTitle>
+              <BackBtn onClick={() => (floatStore.registerIsView = false)} />
+              <TitleText>注册</TitleText>
+            </FormTitle>
+            <FormComponent>
+              <Input
+                icon="user"
+                placeholder="Username"
+                onChange={val => (this.username = val)}
+              />
+            </FormComponent>
+            <FormComponent>
+              <Input
+                icon="lock"
+                placeholder="Password"
+                type="password"
+                onChange={val => (this.password = val)}
+              />
+            </FormComponent>
+            <FormComponent>
+              <EntryWrapper>
+                <EntryBtn
+                  hoverColor={theme.deepGreen}
+                  bgColor={theme.green}
+                  color="#fff"
+                  onClick={() => this.handleRegisterClick(register)}
+                >
+                  加入 Fast Resume 吧！
+                </EntryBtn>
+              </EntryWrapper>
+            </FormComponent>
+          </FormControlBodyWrapper>
+        </FormControl>
+      </Float>
     );
+    //     }}
+    //   </Mutation>
+    // );
   }
 }

@@ -44,7 +44,10 @@ export const theme = {
   darkPane: '#4b4b4b',
   red: '#e74c3c',
   deepRed: '#c0392b',
+  deepGray: '#2d3436',
   tagTextFont: '60px',
+  translucentBlack: 'rgba(0,0,0,0.3)',
+  greatBorderRadius: '15px',
 };
 
 export default styled;

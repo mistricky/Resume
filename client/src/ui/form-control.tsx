@@ -19,14 +19,14 @@ const Body = styled.div`
   width: 500px;
   height: 600px;
   background: #fff;
-  border-radius: ${props => props.theme.borderRadius};
-  box-shadow: 0 0 5px ${props => props.theme.shadowColor};
+  border-radius: ${props => props.theme.greatBorderRadius};
   overflow: hidden;
 
   @media (max-width: ${props => props.theme.mobileWidth}) {
     box-shadow: none;
     width: 100% !important;
     height: 100% !important ;
+    border-radius: 0;
   }
 `;
 
@@ -44,6 +44,15 @@ const Wrapper = styled.div`
 
 export const FormControlBodyWrapper = styled.div`
   padding: 30px 20px;
+`;
+
+export const FormTitle = styled.div`
+  width: 100%;
+  height: 65px;
+  font-size: 35px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 `;
 
 @observer

@@ -5,7 +5,7 @@ import React, {Component, ReactNode} from 'react';
 import FontAwesome from 'react-fontawesome';
 import styled from 'styled-components';
 
-import {loginModalCircleStore} from 'src/entrances';
+import {floatStore, loginModalCircleStore} from 'src/entrances';
 import {theme} from 'src/theme';
 import {
   Button,
@@ -19,12 +19,14 @@ import {
 } from 'src/ui';
 
 import {BackBtn} from '../back-btn';
+import {Float} from '../float';
 
 import {OtherLoginWay} from './other-login-way';
 
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  background: transparent;
 `;
 
 const Coffee = styled(FontAwesome)`
@@ -104,76 +106,78 @@ export class Login extends Component {
     );
 
     return (
-      <FormControl
-        bgColor={theme.blue}
-        style={{
-          width: '500px',
-          height: 'auto',
-        }}
-      >
-        <Wrapper>
-          <FormControlBodyWrapper>
-            <FormTitle>
-              <BackBtn />
-              <TitleText>登录</TitleText>
-              <Coffee name="coffee" />
-            </FormTitle>
-            <FormComponent>
-              <Input
-                icon="user"
-                placeholder="Username"
-                onChange={val => (this.username = val)}
-                value={this.username}
-                isFloat={this.isFloat}
-              />
-            </FormComponent>
-            <FormComponent>
-              <Input
-                icon="lock"
-                placeholder="Password"
-                type="password"
-                value={this.password}
-                onChange={val => (this.password = val)}
-                isFloat={this.isFloat}
-              />
-            </FormComponent>
-            <FormComponent>
-              <Direction
-                direction="row"
-                style={{
-                  width: '80%',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <CheckBox
-                  isCheck={this.isCheck}
-                  handleClick={() => this.handleCheckBoxClick()}
+      <Float isView={floatStore.loginIsView}>
+        <FormControl
+          bgColor={theme.blue}
+          style={{
+            width: '500px',
+            height: 'auto',
+          }}
+        >
+          <Wrapper>
+            <FormControlBodyWrapper>
+              <FormTitle>
+                <BackBtn onClick={() => (floatStore.loginIsView = false)} />
+                <TitleText>登录</TitleText>
+                <Coffee name="coffee" />
+              </FormTitle>
+              <FormComponent>
+                <Input
+                  icon="user"
+                  placeholder="Username"
+                  onChange={val => (this.username = val)}
+                  value={this.username}
+                  isFloat={this.isFloat}
                 />
-                <Popover
-                  placement="bottomRight"
-                  title="看看遇到的是不是这些问题？"
-                  content={loginQuestion}
+              </FormComponent>
+              <FormComponent>
+                <Input
+                  icon="lock"
+                  placeholder="Password"
+                  type="password"
+                  value={this.password}
+                  onChange={val => (this.password = val)}
+                  isFloat={this.isFloat}
+                />
+              </FormComponent>
+              <FormComponent>
+                <Direction
+                  direction="row"
+                  style={{
+                    width: '80%',
+                    justifyContent: 'space-between',
+                  }}
                 >
-                  <LoginQuestion>登录时遇到问题？</LoginQuestion>
-                </Popover>
-              </Direction>
-            </FormComponent>
-            <FormComponent>
-              <EntryWrapper>
-                <EntryBtn
-                  color="#fff"
-                  bgColor={theme.blue}
-                  hoverColor={theme.deepBlue}
-                >
-                  修改自己的简历！
-                </EntryBtn>
-              </EntryWrapper>
-            </FormComponent>
-          </FormControlBodyWrapper>
+                  <CheckBox
+                    isCheck={this.isCheck}
+                    handleClick={() => this.handleCheckBoxClick()}
+                  />
+                  <Popover
+                    placement="bottomRight"
+                    title="看看遇到的是不是这些问题？"
+                    content={loginQuestion}
+                  >
+                    <LoginQuestion>登录时遇到问题？</LoginQuestion>
+                  </Popover>
+                </Direction>
+              </FormComponent>
+              <FormComponent>
+                <EntryWrapper>
+                  <EntryBtn
+                    color="#fff"
+                    bgColor={theme.blue}
+                    hoverColor={theme.deepBlue}
+                  >
+                    修改自己的简历！
+                  </EntryBtn>
+                </EntryWrapper>
+              </FormComponent>
+            </FormControlBodyWrapper>
 
-          <OtherLoginWay />
-        </Wrapper>
-      </FormControl>
+            <OtherLoginWay />
+          </Wrapper>
+        </FormControl>
+      </Float>
     );
   }
 

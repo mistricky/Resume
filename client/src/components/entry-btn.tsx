@@ -7,10 +7,11 @@ interface ActionButtonBodyProps {
   bgColor?: string;
   color?: string;
   hoverColor?: string;
+  onClick?(): void;
 }
 
 export interface EntryBtnProps extends ActionButtonBodyProps {
-  loading: boolean;
+  loading?: boolean;
 }
 
 export const ActionButtonBody = styled.div<ActionButtonBodyProps>`
@@ -33,11 +34,14 @@ export class ActionButton extends Component<EntryBtnProps> {
       bgColor,
       color = '#000',
       hoverColor = theme.shadowColor,
+      onClick,
     } = this.props;
 
     return (
       <ActionButtonBody bgColor={bgColor} color={color} hoverColor={hoverColor}>
-        <Button loading={loading}>{children}</Button>
+        <Button loading={loading} onClick={onClick}>
+          {children}
+        </Button>
       </ActionButtonBody>
     );
   }

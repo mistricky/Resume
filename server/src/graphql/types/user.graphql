@@ -1,0 +1,24 @@
+type Person {
+  name: String
+  age: Int
+}
+
+input UserInfo {
+  username: String
+  password: String
+}
+
+type RequestResult {
+  isErr: Boolean
+  payload: String
+  errMsg: String
+}
+
+type Mutation {
+  register(userInfo: UserInfo): RequestResult
+  login(userInfo: UserInfo): RequestResult
+}
+
+type Query {
+  person: Person
+}

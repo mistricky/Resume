@@ -10,3 +10,5 @@ export * from './register';
 export * from './resume';
 export * from './side';
 export * from './tag-text';
+export * from './entry-btn';
+export * from './float';

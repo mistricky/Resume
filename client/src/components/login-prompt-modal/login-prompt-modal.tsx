@@ -1,10 +1,13 @@
 import {observer} from 'mobx-react';
 import React, {Component, ReactNode} from 'react';
-import {Link} from 'react-router-dom';
 import styled from 'styled-components';
 
 // import {BottomModalStore} from 'src/store';
-import {bottomModalStore, loginModalCircleStore} from 'src/entrances';
+import {
+  bottomModalStore,
+  floatStore,
+  loginModalCircleStore,
+} from 'src/entrances';
 import {BottomModalStore, LoginModalCircleStore} from 'src/store';
 import {theme} from 'src/theme';
 import {BottomModal} from 'src/ui';
@@ -96,7 +99,17 @@ export const CircleWrapper = styled.div<CircleWrapperProps>`
 
 @observer
 export class LoginPromptModal extends Component<LoginPromptModalProps> {
-  handleClick(): void {
+  handleSkipClick(): void {
+    this.closeModal();
+  }
+
+  handleLoginClick(): void {
+    floatStore.loginIsView = true;
+    this.closeModal();
+  }
+
+  handleRegisterClick(): void {
+    floatStore.registerIsView = true;
     this.closeModal();
   }
 
@@ -106,13 +119,22 @@ export class LoginPromptModal extends Component<LoginPromptModalProps> {
         <LoginPrompt>
           <PromptText>工作找到没啊！加入组织啊！！！</PromptText>
           <ButtonWrapper>
-            <Link to="/login">
-              <LoginButton circleColor={theme.blue}>登录</LoginButton>
-            </Link>
-            <Link to="/register">
-              <RegisterButton circleColor={theme.yellow}>注册</RegisterButton>
-            </Link>
-            <SkipButton onClick={() => this.handleClick()} circleColor="#000">
+            <LoginButton
+              onClick={() => this.handleLoginClick()}
+              circleColor={theme.blue}
+            >
+              登录
+            </LoginButton>
+            <RegisterButton
+              onClick={() => this.handleRegisterClick()}
+              circleColor={theme.yellow}
+            >
+              注册
+            </RegisterButton>
+            <SkipButton
+              onClick={() => this.handleSkipClick()}
+              circleColor="#000"
+            >
               随便逛逛！
             </SkipButton>
           </ButtonWrapper>

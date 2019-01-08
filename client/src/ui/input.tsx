@@ -133,7 +133,7 @@ export class Input extends Component<InputProps, InputState> {
       placeholder,
       type = 'text',
       icon,
-      value = '',
+      value,
       onChange = this.noob,
       isFloat,
     } = this.props;
