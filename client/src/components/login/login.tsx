@@ -117,7 +117,12 @@ export class Login extends Component {
           <Wrapper>
             <FormControlBodyWrapper>
               <FormTitle>
-                <BackBtn onClick={() => (floatStore.loginIsView = false)} />
+                <BackBtn
+                  onClick={() => {
+                    floatStore.loginIsView = false;
+                    loginModalCircleStore.isDeploy = false;
+                  }}
+                />
                 <TitleText>登录</TitleText>
                 <Coffee name="coffee" />
               </FormTitle>
