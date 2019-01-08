@@ -3,7 +3,8 @@ import React, {Component, ReactNode} from 'react';
 import {ApolloProvider} from 'react-apollo';
 import {BrowserRouter, Route} from 'react-router-dom';
 
-import {Login, Register, Resume} from 'src/components';
+import {Login, Register} from 'src/components';
+import {MainPage} from 'src/components/main-page';
 import * as stores from 'src/entrances';
 // tslint:disable-next-line:no-duplicate-imports
 import {
@@ -117,9 +118,10 @@ export class App extends Component {
               {/* <Modal /> */}
               <BrowserRouter>
                 <>
-                  <Route exact path="/" component={Resume} />
-                  <Route exact path="/login" component={Login} />
-                  <Route exact path="/register" component={Register} />
+                  <Login />
+                  <Register />
+
+                  <Route exact path="/" component={MainPage} />
                 </>
               </BrowserRouter>
             </Wrapper>
