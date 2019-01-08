@@ -78,7 +78,12 @@ export class Register extends Component {
         >
           <FormControlBodyWrapper>
             <FormTitle>
-              <BackBtn onClick={() => (floatStore.registerIsView = false)} />
+              <BackBtn
+                onClick={() => {
+                  floatStore.registerIsView = false;
+                  loginModalCircleStore.isDeploy = false;
+                }}
+              />
               <TitleText>注册</TitleText>
             </FormTitle>
             <FormComponent>
