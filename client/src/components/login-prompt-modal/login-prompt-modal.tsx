@@ -48,7 +48,7 @@ const LoginPrompt = styled.div`
     align-item: center;
     flex-direction: column;
     height: auto;
-    padding: 20px 0;
+    padding: 20px 5rem;
   }
 `;
 
@@ -62,6 +62,7 @@ const ButtonWrapper = styled.div`
   @media (max-width: ${props => props.theme.mobileWidth}) {
     display: flex;
     flex-direction: column;
+    width: 100%;
 
     > button {
       width: 100%;
