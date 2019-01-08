@@ -92,6 +92,7 @@ injectGlobal`
 const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  padding-top: 4.5rem;
   display: flex;
   flex-direction: row;
 `;
