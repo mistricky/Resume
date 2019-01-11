@@ -4,7 +4,7 @@ import {observable} from 'mobx';
 
 export class LoginService {
   @observable
-  isLogin!: boolean;
+  isLogin: boolean = false;
 
   register(): void {
     // httpService.post('/register');

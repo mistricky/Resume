@@ -1,6 +1,7 @@
 import React, {Component, ReactNode} from 'react';
 
-import styled from 'src/theme/style';
+import styled, {theme} from 'src/theme/style';
+import {GhostButton} from 'src/ui';
 
 import box from '../../asserts/box.png';
 import emptyFile from '../../asserts/empty-file.png';
@@ -45,8 +46,36 @@ const SingleChannel = styled.div`
   height: 70px;
 `;
 
+const Logo = styled.p`
+  font-size: 70px;
+  text-align: center;
+  margin-top: 50px;
+  margin-bottom: 0;
+`;
+
+const Description = styled.p`
+  font-size: 20px;
+  text-align: center;
+`;
+
+const TextContainer = styled.div`
+  margin-bottom: 50px;
+`;
+
 export const SizableImage = styled.img<SizableImageProps>`
   width: ${props => props.width};
+`;
+
+export const EntryContainer = styled.div`
+  width: 100%;
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+export const Entry = styled(GhostButton)`
+  width: 150px;
+  height: 50px;
 `;
 
 export class MainPage extends Component {
@@ -59,11 +88,28 @@ export class MainPage extends Component {
     return (
       <Wrapper>
         <HeaderBar />
+        <TextContainer>
+          <Logo>Fast Resume</Logo>
+          <Description>一个用于快速构建简历的工具</Description>
+        </TextContainer>
         <Principle>
           <Channel>{this.renderMoveNode(false, emptyFile)}</Channel>
           <SizableImage width="300px" src={box} style={{zIndex: 2}} />
           <Channel>{this.renderMoveNode(true, resumeFile)}</Channel>
         </Principle>
+        <EntryContainer>
+          <GhostButton
+            style={{
+              padding: '15px 30px',
+              fontSize: '20px',
+            }}
+            color="black"
+            hoverColor={theme.green}
+            hoverFontColor="#fff"
+          >
+            开始创建自己的简历
+          </GhostButton>
+        </EntryContainer>
       </Wrapper>
     );
   }

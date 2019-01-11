@@ -17,7 +17,7 @@ const Wrapper = styled.div<FloatWrapperProps>`
   left: 0;
   top: 0;
   display: ${props => (props.isView ? 'block' : 'none')};
-  z-index: 0;
+  z-index: 3;
   background: ${props => props.theme.translucentBlack};
 `;
 
