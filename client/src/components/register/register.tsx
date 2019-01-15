@@ -62,11 +62,6 @@ export class Register extends Component {
   }
 
   render(): ReactNode {
-    // return (
-    //   <Mutation mutation={register}>
-    //     {(register, {data}) => {
-    //       console.info(data);
-
     return (
       <Float isView={floatStore.registerIsView}>
         <FormControl
@@ -117,8 +112,5 @@ export class Register extends Component {
         </FormControl>
       </Float>
     );
-    //     }}
-    //   </Mutation>
-    // );
   }
 }
